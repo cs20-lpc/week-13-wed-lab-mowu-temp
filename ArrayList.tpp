@@ -1,16 +1,54 @@
 template <typename T>
 void ArrayList<T>::bubbleSort() {
-    // TODO
+    for (int i = 0; i < getLength(); i++) {
+        for (int j = getLength()-1; j > i; j--) {
+            numComps++;
+            if (buffer[j] < buffer[j-1]) {
+                numSwaps++;
+                T temp = buffer[j-1];
+                buffer[j-1] = buffer[j];
+                buffer[j] = temp;
+            }
+        }
+    }
 }
 
 template <typename T>
 void ArrayList<T>::insertionSort() {
-    // TODO
+    for (int i = 1; i < getLength(); i++) {
+        int j = i;
+        while(j > 0) {
+            numComps++;
+            if (buffer[j] < buffer[j-1]) {
+                numSwaps++;
+                T temp = buffer[j-1];
+                buffer[j-1] = buffer[j];
+                buffer[j] = temp;
+            } else {
+                break;
+            }
+            j--;
+        }
+    }
 }
 
 template <typename T>
 void ArrayList<T>::selectionSort() {
-    // TODO
+    for (int i = 0; i < getLength(); i++) {
+        int mindex = i;
+        for (int j = i+1; j < getLength(); j++) {
+            numComps++;
+            if (buffer[j] < buffer[mindex]) {
+                mindex = j;
+            }
+        }
+        if (mindex != i) {
+            numSwaps++;
+            T temp = buffer[i];
+            buffer[i] = buffer[mindex];
+            buffer[mindex] = temp;
+        }
+    }
 }
 
 /*******************************************************************************
